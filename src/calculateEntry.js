@@ -8,4 +8,6 @@ function calculateEntry(entrants) {
   // seu código aqui
 }
 
+// Iniciando projeto
+
 module.exports = { calculateEntry, countEntrants };
