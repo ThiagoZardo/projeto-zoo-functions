@@ -3,6 +3,9 @@ const { employees } = require('../data/zoo_data');
 
 // const getSpeciesByIds = require('./getSpeciesByIds');
 function getEmployeeByName(employeeName) {
+  if (!employeeName) {
+    return {};
+  }
   return employees.find((employe) =>
     employe.firstName === employeeName || employe.lastName === employeeName);
 }
