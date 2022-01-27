@@ -48,16 +48,15 @@ const returnDias = (scheduleTarget) => {
   return obj3;
 };
 
-const returnAnimalExibicao = (scheduleTarget) => 
-species.find((element) => scheduleTarget === element.name).availability;
+const returnAnimalExibicao = (scheduleTarget) =>
+  species.find((element) => scheduleTarget === element.name).availability;
 
-
-
-function getSchedule(scheduleTarget) {
+const getSchedule = (scheduleTarget) => {
   if ('Monday'.includes(scheduleTarget)) {
     return returnMonday();
   }
-  if (!scheduleTarget || !animals.includes(scheduleTarget) && !daysOfWeek.includes(scheduleTarget)) {
+  if (!scheduleTarget || !animals.includes(scheduleTarget)
+    && !daysOfWeek.includes(scheduleTarget)) {
     return diasHorariosAnimais();
   }
   if (daysOfWeek.includes(scheduleTarget)) {
@@ -67,5 +66,5 @@ function getSchedule(scheduleTarget) {
     return returnAnimalExibicao(scheduleTarget);
   }
 }
-console.log(getSchedule('penguins'));
+
 module.exports = getSchedule;
