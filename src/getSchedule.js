@@ -1,7 +1,7 @@
 const { hours, species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-const daysOfWeek = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'];
+const daysOfWeek = Object.keys(data.hours);
 const animals = ['lions', 'tigers', 'bears', 'penguins', 'otters',
   'frogs', 'snakes', 'elephants', 'giraffes'];
 
@@ -51,22 +51,29 @@ const returnDias = (scheduleTarget) => {
 const returnAnimalExibicao = (scheduleTarget) =>
   species.find((element) => scheduleTarget === element.name).availability;
 
-const getSchedule = (scheduleTarget) => {
-  if ('Monday'.includes(scheduleTarget)) {
-    return returnMonday();
-  }
-  if ((!scheduleTarget)) {
-    return diasHorariosAnimais();
-  }
-  if ((!animals.includes(scheduleTarget)) && (!daysOfWeek.includes(scheduleTarget))) {
-    return diasHorariosAnimais();
-  }
+function novaFuncao(scheduleTarget) {
+  console.log('entrou');
   if (daysOfWeek.includes(scheduleTarget)) {
     return returnDias(scheduleTarget);
   }
   if (animals.includes(scheduleTarget)) {
     return returnAnimalExibicao(scheduleTarget);
   }
+}
+
+const getSchedule = (scheduleTarget) => {
+  if ('Monday'.includes(scheduleTarget)) {
+    return returnMonday();
+  }
+  if ((scheduleTarget === undefined)) {
+    return diasHorariosAnimais();
+  }
+  if ((!animals.includes(scheduleTarget)) && (!daysOfWeek.includes(scheduleTarget))) {
+    return diasHorariosAnimais();
+  }
+  return novaFuncao(scheduleTarget);
 };
+
+console.log(getSchedule('penguins'));
 
 module.exports = getSchedule;
