@@ -5,8 +5,8 @@ function getOldestFromFirstSpecies(id) {
   const idFuncionario = employees.find((idEmployees) => idEmployees.id === id);
   const idSpecies = idFuncionario.responsibleFor[0];
   const residentes = species.find((animal) => animal.id === idSpecies).residents;
-  
-  //Aqui eu recebi a ajuda do Imar Mendes para entender o .reduce()
+
+  // Aqui eu recebi a ajuda do Imar Mendes para entender o .reduce()
   const maiorIdade = residentes.reduce((acc, curr) => {
     if (acc < curr.age) {
       return curr.age;
