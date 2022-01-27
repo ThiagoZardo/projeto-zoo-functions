@@ -55,8 +55,10 @@ const getSchedule = (scheduleTarget) => {
   if ('Monday'.includes(scheduleTarget)) {
     return returnMonday();
   }
-  if (!scheduleTarget || !animals.includes(scheduleTarget)
-    && !daysOfWeek.includes(scheduleTarget)) {
+  if ((!scheduleTarget)) {
+    return diasHorariosAnimais();
+  }
+  if ((!animals.includes(scheduleTarget)) && (!daysOfWeek.includes(scheduleTarget))) {
     return diasHorariosAnimais();
   }
   if (daysOfWeek.includes(scheduleTarget)) {
@@ -65,6 +67,6 @@ const getSchedule = (scheduleTarget) => {
   if (animals.includes(scheduleTarget)) {
     return returnAnimalExibicao(scheduleTarget);
   }
-}
+};
 
 module.exports = getSchedule;
