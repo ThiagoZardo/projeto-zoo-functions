@@ -48,9 +48,10 @@ const returnDias = (scheduleTarget) => {
   return obj3;
 };
 
-const returnAnimalExibicao = (scheduleTarget) => {
-  return console.log('Retornou Animal')
-};
+const returnAnimalExibicao = (scheduleTarget) => 
+species.find((element) => scheduleTarget === element.name).availability;
+
+
 
 function getSchedule(scheduleTarget) {
   if ('Monday'.includes(scheduleTarget)) {
@@ -65,7 +66,6 @@ function getSchedule(scheduleTarget) {
   if (animals.includes(scheduleTarget)) {
     return returnAnimalExibicao(scheduleTarget);
   }
-  // if (!scheduleTarget || scheduleTarget !== animals || scheduleTarget !== daysOfWeek) {
 }
-console.log(getSchedule('Tuesday'));
+console.log(getSchedule('penguins'));
 module.exports = getSchedule;
