@@ -2,6 +2,8 @@ const { employees, species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 // Sem parâmetros, retorna uma lista com a cobertura de todas as pessoas funcionárias;
+// Dica do rafael Elias começar pelos undefined para guardar o objeto retornado.
+// Também recebi a ajuda da Sheila Nakashima e do Imar Mendes pois eu não estava lembrando das sintaxes das Hofs.
 const retornaListaFuncionarios = () => {
   const array = [];
   employees.forEach((element) => {
@@ -18,15 +20,33 @@ const retornaListaFuncionarios = () => {
   return array;
 };
 
-const retornaObjetoFuncionario = (objeto) => {
-  const pessoasFuncionarias = retornaListaFuncionarios();
-  if (objeto !== objeto.name) {
-    console.log('Objeto com ID');
-    return pessoasFuncionarias.find((element) => element.id
-      .includes(objeto.id));
+const pessoasFuncionarias = retornaListaFuncionarios();
+
+const verificaID = (objeto) => {
+  const pessoaID = pessoasFuncionarias.find((element) => element.id
+    .includes(objeto.id));
+  if (!pessoaID) {
+    throw new Error('Informações inválidas');
   }
-  return pessoasFuncionarias.find((element) => element.fullName
+  return pessoaID;
+};
+
+const verificaName = (objeto) => {
+  const pessoaName = pessoasFuncionarias.find((element) => element.fullName
     .includes(objeto.name));
+  if (!pessoaName) {
+    throw new Error('Informações inválidas');
+  }
+  return pessoaName;
+};
+
+const retornaObjetoFuncionario = (objeto) => {
+  if (objeto.id) {
+    return verificaID(objeto);
+  }
+  if (objeto.name) {
+    return verificaName(objeto);
+  }
 };
 
 function getEmployeesCoverage(parametro) {
@@ -36,8 +56,6 @@ function getEmployeesCoverage(parametro) {
   if (typeof parametro === 'object') {
     return retornaObjetoFuncionario(parametro);
   }
-  throw new Error(/^Informações inválidas$/);
 }
 
-console.log(getEmployeesCoverage({ name: 'Spry' }));
 module.exports = getEmployeesCoverage;
