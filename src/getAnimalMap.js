@@ -13,9 +13,9 @@ const mapaAnimais = () => {
 };
 
 function getAnimalMap(options) {
-  if (!options) {
+  if ((!options) || (options.sex === 'female')) {
     return mapaAnimais();
   }
 }
-console.log(getAnimalMap());
+console.log(getAnimalMap({ sex: 'male' }));
 module.exports = getAnimalMap;
