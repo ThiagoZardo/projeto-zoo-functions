@@ -16,6 +16,9 @@ function getAnimalMap(options) {
   if ((!options) || (options.sex === 'female')) {
     return mapaAnimais();
   }
+  if ((options.sex === 'female') && (options.sorted === true)) {
+    return mapaAnimais();
+  }
 }
-console.log(getAnimalMap({ sex: 'male' }));
+console.log(getAnimalMap({ sex: 'female', sorted: true }));
 module.exports = getAnimalMap;
