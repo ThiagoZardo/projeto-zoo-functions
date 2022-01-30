@@ -58,4 +58,6 @@ function getEmployeesCoverage(parametro) {
   }
 }
 
+console.log(getEmployeesCoverage());
+
 module.exports = getEmployeesCoverage;
