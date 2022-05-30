@@ -12,6 +12,7 @@ const retornaListaFuncionarios = () => {
       fullName: `${element.firstName} ${element.lastName}`,
       species: species.filter((specie) => element.responsibleFor
         .includes(specie.id)).map((nomeAnimal) => nomeAnimal.name),
+                
       locations: species.filter((specie) => element.responsibleFor
         .includes(specie.id)).map((nomeAnimal) => nomeAnimal.location),
     };
